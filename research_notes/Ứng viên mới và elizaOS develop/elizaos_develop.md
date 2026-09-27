@@ -174,7 +174,7 @@ Chạy được toàn bộ giao thức qua đường vào Telegram thật với 
   - Connector là plugin (services, `MessageConnector`), nên thêm được mà không sửa core [MÃ].
 - **R7:** MIT, "Copyright (c) 2026 Shaw Walters and elizaOS Contributors" (`LICENSE`) [MÃ].
 - **R8:**
-  - Hoạt động cực mạnh: 24.974 commit trong ~3,3 tháng, 168 tác giả. Shaw/lalalune/Shaw Walters chiếm ~14.769 commit (~59%). Có 369 commit do "Claude Fable 5" ký [MÃ git].
+  - Hoạt động cực mạnh: 24.974 commit trong ~3,3 tháng, 168 tác giả. Nhóm tên tác giả "Shaw" (13.255), "lalalune" (1.235) và "Shaw Walters" (279) chiếm ~14.769 commit (~59%). Việc "lalalune" là tài khoản của Shaw là giả định, chưa kiểm chứng; riêng "Shaw" đã chiếm ~53%. Có 369 commit do "Claude Fable 5" ký [MÃ git].
   - Mega-refactor gộp trong 2026-09-25/26 (#32784…#32813, "lean Node-only runtime, consolidate packages") [MÃ git; DOC issue #31532].
   - npm đứng yên: `@elizaos/core` `latest 1.7.2`, `beta 2.0.3-beta.7` (2026-06-28); `@elizaos/agent` `latest 0.25.9`. Package trong repo vẫn ghi `2.0.3-beta.7` [MÃ registry].
   - Trang Actions lọc `develop` hiển thị "Develop Full" #2628/#2629 thành công. Có hàng chục nghìn lượt workflow "Claude Code" (#67094) [DOC; tóm tắt do công cụ fetch, không tự đếm].
@@ -195,7 +195,7 @@ Chạy được toàn bộ giao thức qua đường vào Telegram thật với 
 | **R1** Backend riêng, key riêng | **Đạt** | plugin-openai với base URL riêng chạy đủ luồng | [CHẠY] |
 | **R6** Kênh mở rộng bằng code, có Zalo | **Một phần** | Telegram chạy. Connector là plugin. Zalo chỉ có npm alpha.6 (2026-02-17), ngoài cây `develop`, cần port | [CHẠY+MÃ] |
 | **R7** Tự host, giấy phép dùng kinh doanh | **Đạt** | MIT | [MÃ] |
-| **R8** Còn sống, ổn định | **Một phần** (sống mạnh, kém ổn định) | ~25k commit từ 2026-06-18 (lịch sử bị viết lại); mega-refactor 2026-09-25/26; npm dừng ở beta.7 2026-06-28; ~59% commit từ một người | [MÃ git/registry; DOC] |
+| **R8** Còn sống, ổn định | **Một phần** (sống mạnh, kém ổn định) | ~25k commit từ 2026-06-18 (lịch sử bị viết lại); mega-refactor 2026-09-25/26; npm dừng ở beta.7 2026-06-28; ~53–59% commit từ một tác giả | [MÃ git/registry; DOC] |
 
 ### Inferences
 - Các điểm mạnh thật của `develop` là trí nhớ theo người (5b-in), persona ổn định (K3) và vai trò gắn ID nền tảng chống giả tên (K5). Chúng rất sát yêu cầu, và đã được chứng minh bằng chạy thật.
@@ -243,7 +243,7 @@ Tổng MVP (1–10): khoảng 9–15 tuần công, tức 2–3 người-tháng. 
   - Plugin tự viết sẽ vỡ theo API nội bộ (ví dụ `messageService`, `contextGate`, cấu trúc Stage 1). Không có semver hay CHANGELOG.
   - npm không phát hành từ 2026-06-28.
 - **Hướng sản phẩm ngược nhu cầu:** OS/mobile/wallet/cloud chiếm phần lớn commit. Tính năng doanh nghiệp đa người dùng (tenant, phòng ban) chỉ có trên Eliza Cloud (dịch vụ hosted).
-- **Bus factor:** ~59% commit từ một người (Shaw/lalalune). Rất nhiều commit do agent AI tạo (369 commit "Claude Fable 5", workflow "Claude Code" chạy liên tục).
+- **Bus factor:** ~53% commit mang tên tác giả "Shaw" (~59% nếu tính cả "lalalune" và "Shaw Walters"). Rất nhiều commit do agent AI tạo (369 commit "Claude Fable 5", workflow "Claude Code" chạy liên tục).
 - **Kích thước và công cụ:** 29.296 file, 749 MB (blobless). Ghim bun 1.4.2 và Node 24.15.0. Postinstall build nhiều thứ (inference, views). Bản cài tối thiểu 6 package vẫn là 629 gói, 385 MB.
 - **Chi phí token:** 2–7 lời gọi LLM mỗi tin, prompt evaluator hậu lượt ~15 nghìn ký tự. Có thể tách model cho evaluator: commit `#32829` "feat(assistant): add opt-in evaluator-only model selection" (2026-09-27) [MÃ git].
 - **Bảo mật:**
